@@ -31,7 +31,15 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+Verify compliance with all constitutional principles before proceeding:
+
+- [ ] **Test-First Development**: Tests will be written before implementation, TDD cycle enforced
+- [ ] **Code Quality**: DRY, KISS, and SOLID principles applied; error handling planned
+- [ ] **Single Responsibility**: Each component/module has one clear purpose
+- [ ] **Code Style Standards**: ESLint rules followed, naming conventions planned
+- [ ] **User-Centric Simplicity**: Feature has clear user value, YAGNI applied, no scope creep
+
+*If any checks fail, document justification in Complexity Tracking section below.*
 
 ## Project Structure
 
