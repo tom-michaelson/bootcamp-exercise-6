@@ -17,7 +17,7 @@ As a user viewing my todo list, I need to immediately see which incomplete todos
 
 **Acceptance Scenarios**:
 
-1. **Given** I have an incomplete todo with a due date of yesterday, **When** I view my todo list, **Then** the todo item is displayed with a visual indicator (red text, red border, or "Overdue" badge)
+1. **Given** I have an incomplete todo with a due date of yesterday, **When** I view my todo list, **Then** the todo item is displayed with red text, red border, and an "Overdue" badge
 2. **Given** I have an incomplete todo with a due date of today, **When** I view my todo list, **Then** the todo item is displayed normally (not marked as overdue)
 3. **Given** I have an incomplete todo with a due date of tomorrow, **When** I view my todo list, **Then** the todo item is displayed normally (not marked as overdue)
 4. **Given** I have a completed todo with a due date in the past, **When** I view my todo list, **Then** the todo item is NOT marked as overdue (completion status overrides overdue status)
@@ -35,8 +35,8 @@ As a user, I want to see a count or summary of how many todos are overdue at the
 
 **Acceptance Scenarios**:
 
-1. **Given** I have 3 incomplete todos with past due dates, **When** I view my todo list, **Then** I see "3 overdue tasks" displayed prominently
-2. **Given** I have 0 incomplete todos with past due dates, **When** I view my todo list, **Then** the overdue count is not displayed (or shows "0 overdue tasks")
+1. **Given** I have 3 incomplete todos with past due dates, **When** I view my todo list, **Then** I see "3 overdue tasks" displayed in a banner above the todo list
+2. **Given** I have 0 incomplete todos with past due dates, **When** I view my todo list, **Then** the overdue banner is not displayed
 3. **Given** I complete an overdue todo, **When** the todo list refreshes, **Then** the overdue count decreases by 1
 4. **Given** a todo becomes overdue (due date passes while I'm viewing the list), **When** I refresh or reload the page, **Then** the overdue count increases by 1
 
@@ -52,9 +52,9 @@ As a user viewing an overdue todo, I want to see how many days it's been overdue
 
 **Acceptance Scenarios**:
 
-1. **Given** I have a todo that was due 1 day ago, **When** I view the todo, **Then** I see "1 day overdue" displayed
-2. **Given** I have a todo that was due 5 days ago, **When** I view the todo, **Then** I see "5 days overdue" displayed
-3. **Given** I have a todo that was due today, **When** I view the todo, **Then** I do not see an overdue duration message
+1. **Given** I have a todo that was due 1 day ago, **When** I view the todo, **Then** I see "Overdue: 1 day" displayed in the badge
+2. **Given** I have a todo that was due 5 days ago, **When** I view the todo, **Then** I see "Overdue: 5 days" displayed in the badge
+3. **Given** I have a todo that was due today, **When** I view the todo, **Then** I do not see an overdue badge
 4. **Given** the system clock advances past midnight, **When** I refresh my todo list, **Then** overdue durations are recalculated to reflect the new date
 
 ---
@@ -72,15 +72,15 @@ As a user viewing an overdue todo, I want to see how many days it's been overdue
 ### Functional Requirements
 
 - **FR-001**: System MUST identify a todo as overdue when its due date is before the current date AND the todo is not marked as completed
-- **FR-002**: System MUST visually distinguish overdue todos from non-overdue todos through styling (color, border, or badge)
+- **FR-002**: System MUST visually distinguish overdue todos from non-overdue todos using ALL of the following: red text color, red border, and an "Overdue" badge with text label
 - **FR-003**: System MUST calculate overdue status using the current date in the user's local timezone
 - **FR-004**: System MUST exclude completed todos from overdue status regardless of their due date
 - **FR-005**: System MUST exclude todos without a due date from overdue calculations
 - **FR-006**: System MUST recalculate overdue status when a todo's completion status changes
 - **FR-007**: System MUST recalculate overdue status when a todo's due date is modified
-- **FR-008**: System MUST display an overdue count showing the total number of incomplete todos past their due date
+- **FR-008**: System MUST display an overdue count in a dedicated banner/alert section above the todo list with a subtle gray background and red accent border, showing the total number of incomplete todos past their due date; the banner MUST be hidden entirely when the count is 0
 - **FR-009**: System MUST update the overdue count when todos are added, completed, deleted, or have their due dates changed
-- **FR-010**: System MUST display the number of days a todo is overdue (due date to current date calculation)
+- **FR-010**: System MUST display the number of days a todo is overdue inline within the overdue badge (e.g., "Overdue: 2 days"), calculated as current date minus due date
 
 ### Key Entities
 
@@ -115,3 +115,13 @@ As a user viewing an overdue todo, I want to see how many days it's been overdue
 - Historical tracking of how long todos were overdue before completion
 - Priority levels or urgency scoring beyond basic overdue status
 - Time-of-day due dates (e.g., "due at 3:00 PM today")
+
+## Clarifications
+
+### Session 2026-02-03
+
+- Q: Visual Indicator Style Specificity - Which specific visual treatment should be used for overdue todos? → A: Red text + red border + "Overdue" badge text (strongest visual, multiple cues, most accessible)
+- Q: Overdue Count Display Position - Where exactly should the overdue count be displayed? → A: Dedicated banner/alert section above todo list (most prominent)
+- Q: Overdue Duration Display Location - Where should the "X days overdue" information be displayed? → A: Inline within the overdue badge (e.g., "Overdue: 2 days")
+- Q: Overdue Banner Styling & Color - What styling should be used for the overdue count banner? → A: Subtle gray background with red accent border
+- Q: Zero Overdue State Handling - Should the banner display when there are zero overdue tasks? → A: Hide banner entirely when count is 0 (cleaner, no visual clutter)
