@@ -25,9 +25,9 @@ This is a web application with:
 
 **Purpose**: Ensure development environment is ready
 
-- [ ] T001 Verify branch is 001-overdue-todos and environment is running
-- [ ] T002 Confirm frontend tests pass at baseline: npm test --workspace=frontend
-- [ ] T003 [P] Review plan.md, spec.md, data-model.md, and quickstart.md
+- [X] T001 Verify branch is 001-overdue-todos and environment is running
+- [X] T002 Confirm frontend tests pass at baseline: npm test --workspace=frontend
+- [X] T003 [P] Review plan.md, spec.md, data-model.md, and quickstart.md
 
 **Checkpoint**: Environment ready, requirements understood
 
@@ -39,10 +39,10 @@ This is a web application with:
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T004 Create packages/frontend/src/utils/dateUtils.js with isOverdue and getDaysOverdue functions
-- [ ] T005 Create packages/frontend/src/utils/__tests__/dateUtils.test.js with comprehensive test cases
-- [ ] T006 Run tests for dateUtils: npm test --workspace=frontend dateUtils
-- [ ] T007 [P] Add CSS variables for overdue styling in packages/frontend/src/App.css (danger color)
+- [X] T004 Create packages/frontend/src/utils/dateUtils.js with isOverdue and getDaysOverdue functions
+- [X] T005 Create packages/frontend/src/utils/__tests__/dateUtils.test.js with comprehensive test cases
+- [X] T006 Run tests for dateUtils: npm test --workspace=frontend dateUtils
+- [X] T007 [P] Add CSS variables for overdue styling in packages/frontend/src/App.css (danger color)
 
 **Checkpoint**: Foundation ready - date utilities tested and available, user story implementation can now begin in parallel
 
@@ -58,22 +58,22 @@ This is a web application with:
 
 > **TDD: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T008 [P] [US1] Add test case to packages/frontend/src/components/__tests__/TodoCard.test.js: overdue todo displays red styling and badge
-- [ ] T009 [P] [US1] Add test case to packages/frontend/src/components/__tests__/TodoCard.test.js: completed overdue todo does NOT show overdue styling
-- [ ] T010 [P] [US1] Add test case to packages/frontend/src/components/__tests__/TodoCard.test.js: todo due today is NOT overdue
-- [ ] T011 [P] [US1] Add test case to packages/frontend/src/components/__tests__/TodoCard.test.js: todo with no due date is NOT overdue
-- [ ] T012 [P] [US1] Add test case to packages/frontend/src/components/__tests__/TodoCard.test.js: badge shows correct days count (singular/plural)
-- [ ] T013 [US1] Run TodoCard tests to verify they FAIL: npm test --workspace=frontend TodoCard
+- [X] T008 [P] [US1] Add test case to packages/frontend/src/components/__tests__/TodoCard.test.js: overdue todo displays red styling and badge
+- [X] T009 [P] [US1] Add test case to packages/frontend/src/components/__tests__/TodoCard.test.js: completed overdue todo does NOT show overdue styling
+- [X] T010 [P] [US1] Add test case to packages/frontend/src/components/__tests__/TodoCard.test.js: todo due today is NOT overdue
+- [X] T011 [P] [US1] Add test case to packages/frontend/src/components/__tests__/TodoCard.test.js: todo with no due date is NOT overdue
+- [X] T012 [P] [US1] Add test case to packages/frontend/src/components/__tests__/TodoCard.test.js: badge shows correct days count (singular/plural)
+- [X] T013 [US1] Run TodoCard tests to verify they FAIL: npm test --workspace=frontend TodoCard
 
 ### Implementation for User Story 1
 
-- [ ] T014 [US1] Update packages/frontend/src/components/TodoCard.js to import dateUtils functions
-- [ ] T015 [US1] Update packages/frontend/src/components/TodoCard.js to calculate isOverdue and daysOverdue
-- [ ] T016 [US1] Update packages/frontend/src/components/TodoCard.js to apply 'overdue' CSS class conditionally
-- [ ] T017 [US1] Update packages/frontend/src/components/TodoCard.js to render overdue badge with days count when isOverdue is true
-- [ ] T018 [US1] Add .todo-card.overdue and .overdue-badge CSS rules in packages/frontend/src/App.css
-- [ ] T019 [US1] Run TodoCard tests to verify they PASS: npm test --workspace=frontend TodoCard
-- [ ] T020 [US1] Manual verification: npm start and test with various overdue scenarios
+- [X] T014 [US1] Update packages/frontend/src/components/TodoCard.js to import dateUtils functions
+- [X] T015 [US1] Update packages/frontend/src/components/TodoCard.js to calculate isOverdue and daysOverdue
+- [X] T016 [US1] Update packages/frontend/src/components/TodoCard.js to apply 'overdue' CSS class conditionally
+- [X] T017 [US1] Update packages/frontend/src/components/TodoCard.js to render overdue badge with days count when isOverdue is true
+- [X] T018 [US1] Add .todo-card.overdue and .overdue-badge CSS rules in packages/frontend/src/App.css
+- [X] T019 [US1] Run TodoCard tests to verify they PASS: npm test --workspace=frontend TodoCard
+- [X] T020 [US1] Manual verification: npm start and test with various overdue scenarios
 
 **Checkpoint**: User Story 1 complete - overdue todos display with visual indicators independently testable
 
@@ -89,25 +89,25 @@ This is a web application with:
 
 > **TDD: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T021 [P] [US2] Create packages/frontend/src/components/__tests__/OverdueBanner.test.js with test: displays count when count > 0
-- [ ] T022 [P] [US2] Add test case to OverdueBanner.test.js: returns null when count is 0
-- [ ] T023 [P] [US2] Add test case to OverdueBanner.test.js: displays correct singular/plural text ("task" vs "tasks")
-- [ ] T024 [P] [US2] Add test cases to packages/frontend/src/components/__tests__/TodoList.test.js: calculates overdueCount correctly
-- [ ] T025 [P] [US2] Add test case to TodoList.test.js: renders OverdueBanner with correct count
-- [ ] T026 [P] [US2] Add test case to TodoList.test.js: OverdueBanner is rendered above todo cards
-- [ ] T027 [US2] Run OverdueBanner and TodoList tests to verify they FAIL: npm test --workspace=frontend OverdueBanner TodoList
+- [X] T021 [P] [US2] Create packages/frontend/src/components/__tests__/OverdueBanner.test.js with test: displays count when count > 0
+- [X] T022 [P] [US2] Add test case to OverdueBanner.test.js: returns null when count is 0
+- [X] T023 [P] [US2] Add test case to OverdueBanner.test.js: displays correct singular/plural text ("task" vs "tasks")
+- [X] T024 [P] [US2] Add test cases to packages/frontend/src/components/__tests__/TodoList.test.js: calculates overdueCount correctly
+- [X] T025 [P] [US2] Add test case to TodoList.test.js: renders OverdueBanner with correct count
+- [X] T026 [P] [US2] Add test case to TodoList.test.js: OverdueBanner is rendered above todo cards
+- [X] T027 [US2] Run OverdueBanner and TodoList tests to verify they FAIL: npm test --workspace=frontend OverdueBanner TodoList
 
 ### Implementation for User Story 2
 
-- [ ] T028 [P] [US2] Create packages/frontend/src/components/OverdueBanner.js component with count prop
-- [ ] T029 [P] [US2] Implement OverdueBanner.js to display count with proper singular/plural text
-- [ ] T030 [P] [US2] Implement OverdueBanner.js to return null when count is 0
-- [ ] T031 [US2] Add .overdue-banner and .overdue-banner-text CSS rules in packages/frontend/src/App.css
-- [ ] T032 [US2] Update packages/frontend/src/components/TodoList.js to import OverdueBanner and dateUtils
-- [ ] T033 [US2] Update TodoList.js to calculate overdueCount by filtering todos array
-- [ ] T034 [US2] Update TodoList.js to render OverdueBanner above todo cards with count prop
-- [ ] T035 [US2] Run OverdueBanner and TodoList tests to verify they PASS: npm test --workspace=frontend OverdueBanner TodoList
-- [ ] T036 [US2] Manual verification: npm start and test count display with various scenarios
+- [X] T028 [P] [US2] Create packages/frontend/src/components/OverdueBanner.js component with count prop
+- [X] T029 [P] [US2] Implement OverdueBanner.js to display count with proper singular/plural text
+- [X] T030 [P] [US2] Implement OverdueBanner.js to return null when count is 0
+- [X] T031 [US2] Add .overdue-banner and .overdue-banner-text CSS rules in packages/frontend/src/App.css
+- [X] T032 [US2] Update packages/frontend/src/components/TodoList.js to import OverdueBanner and dateUtils
+- [X] T033 [US2] Update TodoList.js to calculate overdueCount by filtering todos array
+- [X] T034 [US2] Update TodoList.js to render OverdueBanner above todo cards with count prop
+- [X] T035 [US2] Run OverdueBanner and TodoList tests to verify they PASS: npm test --workspace=frontend OverdueBanner TodoList
+- [X] T036 [US2] Manual verification: npm start and test count display with various scenarios
 
 **Checkpoint**: User Stories 1 AND 2 complete - visual indicators and count banner both work independently
 
@@ -123,12 +123,12 @@ This is a web application with:
 
 > **NOTE**: Core functionality implemented in User Story 1. This phase verifies edge cases.
 
-- [ ] T037 [P] [US3] Add test case to packages/frontend/src/utils/__tests__/dateUtils.test.js: 1 day overdue calculates correctly
-- [ ] T038 [P] [US3] Add test case to dateUtils.test.js: 5 days overdue calculates correctly
-- [ ] T039 [P] [US3] Add test case to dateUtils.test.js: edge case for leap year boundary
-- [ ] T040 [P] [US3] Add test case to dateUtils.test.js: edge case for month boundary
-- [ ] T041 [US3] Run dateUtils tests to verify edge cases: npm test --workspace=frontend dateUtils
-- [ ] T042 [US3] Manual verification: npm start and test with todos 1, 5, 30+ days overdue
+- [X] T037 [P] [US3] Add test case to packages/frontend/src/utils/__tests__/dateUtils.test.js: 1 day overdue calculates correctly
+- [X] T038 [P] [US3] Add test case to dateUtils.test.js: 5 days overdue calculates correctly
+- [X] T039 [P] [US3] Add test case to dateUtils.test.js: edge case for leap year boundary
+- [X] T040 [P] [US3] Add test case to dateUtils.test.js: edge case for month boundary
+- [X] T041 [US3] Run dateUtils tests to verify edge cases: npm test --workspace=frontend dateUtils
+- [X] T042 [US3] Manual verification: npm start and test with todos 1, 5, 30+ days overdue
 
 **Checkpoint**: All user stories (US1, US2, US3) are independently functional with comprehensive edge case coverage
 
@@ -138,15 +138,15 @@ This is a web application with:
 
 **Purpose**: Final validation and improvements
 
-- [ ] T043 [P] Run full test suite: npm test
-- [ ] T044 [P] Verify test coverage meets 80% threshold: npm test -- --coverage
-- [ ] T045 [P] Run ESLint and fix any errors: npm run lint --workspace=frontend (if script exists)
-- [ ] T046 Verify all acceptance scenarios from spec.md manually
-- [ ] T047 Test accessibility: verify screen readers announce overdue status
-- [ ] T048 Test dark mode compatibility (if applicable)
-- [ ] T049 Performance check: verify overdue calculations are fast with 50+ todos
-- [ ] T050 Review quickstart.md and verify all examples work
-- [ ] T051 Final manual testing: complete user journey through all scenarios
+- [X] T043 [P] Run full test suite: npm test
+- [X] T044 [P] Verify test coverage meets 80% threshold: npm test -- --coverage
+- [X] T045 [P] Run ESLint and fix any errors: npm run lint --workspace=frontend (if script exists)
+- [X] T046 Verify all acceptance scenarios from spec.md manually
+- [X] T047 Test accessibility: verify screen readers announce overdue status
+- [X] T048 Test dark mode compatibility (if applicable)
+- [X] T049 Performance check: verify overdue calculations are fast with 50+ todos
+- [X] T050 Review quickstart.md and verify all examples work
+- [X] T051 Final manual testing: complete user journey through all scenarios
 
 ---
 

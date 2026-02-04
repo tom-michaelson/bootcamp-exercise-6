@@ -289,6 +289,23 @@ p {
   font-size: 12px;
 }
 
+/* Overdue Banner */
+.overdue-banner {
+  padding: var(--space-sm);
+  background-color: var(--danger-color);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-sm);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.overdue-banner-text {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
 /* Todo List */
 .todo-list {
   display: flex;
@@ -332,6 +349,34 @@ p {
   text-decoration: line-through;
   opacity: 0.6;
   color: var(--success-color);
+}
+
+/* Overdue Todo Styles */
+.todo-card.overdue {
+  border: 2px solid var(--danger-color);
+  border-left: 4px solid var(--danger-color);
+}
+
+.todo-card.overdue .todo-title {
+  color: var(--danger-color);
+}
+
+.todo-card.overdue .todo-due-date {
+  color: var(--danger-color);
+  font-weight: 600;
+}
+
+.overdue-badge {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--danger-color);
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .todo-checkbox {

@@ -99,4 +99,105 @@ describe('TodoCard Component', () => {
     
     expect(screen.queryByText(/Due:/)).not.toBeInTheDocument();
   });
+
+  // US1: Overdue Visual Indicators Tests
+  describe('Overdue functionality', () => {
+    const currentDate = new Date('2026-02-04');
+    
+    // Mock the dateUtils module to use fixed date
+    beforeEach(() => {
+      // Save the original Date
+      global.Date = class extends Date {
+        constructor(...args) {
+          if (args.length === 0) {
+            super(currentDate);
+          } else {
+            super(...args);
+          }
+        }
+        
+        static now() {
+          return currentDate.getTime();
+        }
+      };
+    });
+
+    it('should display red styling and overdue badge for overdue incomplete todo', () => {
+      const overdueTodo = {
+        ...mockTodo,
+        dueDate: '2026-02-01', // 3 days ago
+        completed: 0
+      };
+      const { container } = render(<TodoCard todo={overdueTodo} {...mockHandlers} isLoading={false} />);
+      
+      const card = container.querySelector('.todo-card');
+      expect(card).toHaveClass('overdue');
+      expect(screen.getByText(/Overdue:/)).toBeInTheDocument();
+      expect(screen.getByText(/3 days/)).toBeInTheDocument();
+    });
+
+    it('should NOT show overdue styling for completed overdue todo', () => {
+      const completedOverdueTodo = {
+        ...mockTodo,
+        dueDate: '2026-02-01', // 3 days ago
+        completed: 1
+      };
+      const { container } = render(<TodoCard todo={completedOverdueTodo} {...mockHandlers} isLoading={false} />);
+      
+      const card = container.querySelector('.todo-card');
+      expect(card).not.toHaveClass('overdue');
+      expect(screen.queryByText(/Overdue:/)).not.toBeInTheDocument();
+    });
+
+    it('should NOT be overdue for todo due today', () => {
+      const todayTodo = {
+        ...mockTodo,
+        dueDate: '2026-02-04', // today
+        completed: 0
+      };
+      const { container } = render(<TodoCard todo={todayTodo} {...mockHandlers} isLoading={false} />);
+      
+      const card = container.querySelector('.todo-card');
+      expect(card).not.toHaveClass('overdue');
+      expect(screen.queryByText(/Overdue:/)).not.toBeInTheDocument();
+    });
+
+    it('should NOT be overdue for todo with no due date', () => {
+      const noDueDateTodo = {
+        ...mockTodo,
+        dueDate: null,
+        completed: 0
+      };
+      const { container } = render(<TodoCard todo={noDueDateTodo} {...mockHandlers} isLoading={false} />);
+      
+      const card = container.querySelector('.todo-card');
+      expect(card).not.toHaveClass('overdue');
+      expect(screen.queryByText(/Overdue:/)).not.toBeInTheDocument();
+    });
+
+    it('should show singular "day" for 1 day overdue', () => {
+      const oneDayOverdue = {
+        ...mockTodo,
+        dueDate: '2026-02-03', // yesterday
+        completed: 0
+      };
+      render(<TodoCard todo={oneDayOverdue} {...mockHandlers} isLoading={false} />);
+      
+      expect(screen.getByText(/Overdue:/)).toBeInTheDocument();
+      expect(screen.getByText(/1 day/)).toBeInTheDocument();
+      expect(screen.queryByText(/1 days/)).not.toBeInTheDocument();
+    });
+
+    it('should show plural "days" for multiple days overdue', () => {
+      const multipleDaysOverdue = {
+        ...mockTodo,
+        dueDate: '2026-01-30', // 5 days ago
+        completed: 0
+      };
+      render(<TodoCard todo={multipleDaysOverdue} {...mockHandlers} isLoading={false} />);
+      
+      expect(screen.getByText(/Overdue:/)).toBeInTheDocument();
+      expect(screen.getByText(/5 days/)).toBeInTheDocument();
+    });
+  });
 });
